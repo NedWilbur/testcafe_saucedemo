@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 import AuthPage from '../pages/auth.page';
-import { standardUser, lockedUser } from '../data/users'
+import { standardUser, lockedUser } from '../data/roles'
 
 fixture `Authentication`
     .page('https://www.saucedemo.com/');

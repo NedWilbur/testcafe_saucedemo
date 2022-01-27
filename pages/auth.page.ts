@@ -1,5 +1,5 @@
 import { Selector, t } from 'testcafe';
-import { IUser } from '../data/users';
+import { IUser } from '../data/roles';
 
 class AuthPage {
     public Elements = new class {
