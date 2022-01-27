@@ -1,5 +1,5 @@
 import { Selector, t } from 'testcafe';
-import { Item } from '../data/item';
+import { Item } from '../common/item';
 
 class InventoryPage {
     public El = new class {
@@ -21,7 +21,7 @@ class InventoryPage {
         return await new Item(
             await this.El.ItemTitle.innerText,
             await this.El.ItemDescription.innerText,
-            +(await this.El.ItemPrice.innerText).replace('$', '') // `+` converts string to number
+            await this.El.ItemPrice.innerText
         )
     }
 }

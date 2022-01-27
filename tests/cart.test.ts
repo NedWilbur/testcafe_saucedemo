@@ -1,7 +1,7 @@
 import { Selector } from 'testcafe';
 import Page from '../pages/_pages'
 import { standardUserRole } from '../data/roles'
-import { Item } from '../data/item';
+import { Item } from '../common/item';
 
 fixture `Cart`
     .page('https://www.saucedemo.com/inventory.html')
@@ -19,9 +19,11 @@ test('Sandbox', async t => {
         .click(Page.Inventory.El.ItemAddRemoveButton)
         .expect(Page.Inventory.El.ItemAddRemoveButton.innerText).eql('REMOVE')
         .expect(Page.Navbar.El.ShoppingCartBadge.innerText).eql('1')
-    
+        .click(Page.Navbar.El.ShoppingCartButton);
+
+    await Page.Cart.ItemExist(item);
 });
 
-test('Add product to cart from inventory page', async t => {
-
+test('Purchase single item added from inventory page', async t => {
+    
 });
