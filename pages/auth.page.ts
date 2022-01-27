@@ -1,16 +1,18 @@
 import { Selector, t } from 'testcafe';
+import { IUser } from '../data/users';
 
 class AuthPage {
     public Elements = new class {
         UsernameInput: Selector = Selector("*[data-test='username']");
         PasswordInput: Selector = Selector("*[data-test='password']");
         LoginButton: Selector = Selector("*[data-test='login-button']");
+        ErrorBlock: Selector = Selector("*[data-test='error']");
     }
 
-    public async Login(userName: string, password: string) {
+    public async Login(user: IUser) {
         await t
-            .typeText(this.Elements.UsernameInput, userName)
-            .typeText(this.Elements.PasswordInput, password)
+            .typeText(this.Elements.UsernameInput, user.userName)
+            .typeText(this.Elements.PasswordInput, user.password)
             .click(this.Elements.LoginButton);
     }
 }

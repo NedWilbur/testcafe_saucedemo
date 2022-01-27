@@ -1,29 +1,16 @@
 import { Selector } from 'testcafe';
 import AuthPage from '../pages/auth.page';
+import { standardUser, lockedUser } from '../data/users'
 
 fixture `Authentication`
-    .page `https://www.saucedemo.com/`;
+    .page('https://www.saucedemo.com/');
 
 test('Login with standard user', async t => {
-    // await t
-    //     .typeText(page.nameInput, 'Peter')
-    //     .typeText(page.nameInput, 'Paker', { replace: true })
-    //     .typeText(page.nameInput, 'r', { caretPos: 2 })
-    //     .expect(page.nameInput.value).eql('Parker');
-
-    await AuthPage.Login("standard_user", "secret_sauce");
+    await AuthPage.Login(standardUser);
 });
 
-test.skip('Login with locked out user', async t => {
-    // for (const feature of page.featureList) {
-    //     await t
-    //         .click(feature.label)
-    //         .expect(feature.checkbox.checked).ok();
-    // }
-});
-
-test.skip('Login with problem user', async t => {
-    // const header = Selector('#article-header');
-    // await page.submitName('Peter');
-    // await t.expect(header.innerText).eql('Thank you, Peter!');
+test('Login with locked out user', async t => {
+    await AuthPage.Login(lockedUser);
+    await t.expect(AuthPage.Elements.ErrorBlock.innerText)
+        .eql('Epic sadface: Sorry, this user has been locked out.');
 });
