@@ -1,7 +1,7 @@
 import { Selector, t } from 'testcafe';
 
 class InventoryPage {
-    public Elements = new class {
+    public El = new class {
         Header: Selector = Selector(".title");
         ItemContainer: Selector = Selector(".inventory_item");
         ItemTitle: Selector = Selector(".inventory_item_name");
