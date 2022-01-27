@@ -7,7 +7,7 @@ class InventoryPage {
         ItemTitle: Selector = Selector(".inventory_item_name");
         ItemDescription: Selector = Selector(".inventory_item_desc");
         ItemPrice: Selector = Selector(".inventory_item_price");
-        ItemBuyButton: Selector = Selector("button").withText('Add to cart');
+        ItemAddRemoveButton: Selector = Selector('.btn_inventory');
     }
 
     // public async AddItemToCart(user: IUser) {
