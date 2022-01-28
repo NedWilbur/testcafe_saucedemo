@@ -6,6 +6,8 @@ class InventoryPage {
         Header: Selector = Selector(".title");
         ItemContainer: Selector = Selector(".inventory_item");
         ItemName: Selector = Selector(".inventory_item_name");
+        ItemNameByIndex(index: number): Selector { return this.ItemName.nth(index); }
+
         ItemDescription: Selector = Selector(".inventory_item_desc");
         ItemPrice: Selector = Selector(".inventory_item_price");
         

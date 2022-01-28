@@ -7,6 +7,7 @@ class ItemPage {
         ItemDescription: Selector = Selector('.inventory_details_desc');
         ItemPrice: Selector = Selector('.inventory_details_price');
         ItemAddRemoveButton: Selector = Selector('.btn_inventory');
+        BackButton: Selector = Selector('*[data-test="back-to-products"]');
     }
 
     public async GetItemDetails(): Promise<Item> {
