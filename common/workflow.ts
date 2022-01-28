@@ -5,6 +5,8 @@ import Item from "./item";
 
 export default new class Workflows {
     public async Checkout(item: Item, person: Person) {
+        // TODO: Accept a list of items to validate all exist
+
         await t.click(Page.Navbar.El.ShoppingCartButton);
         await Page.Cart.ItemExist(item);
         await t.click(Page.Cart.El.CheckoutButton)
