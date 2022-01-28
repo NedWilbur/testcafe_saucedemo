@@ -26,3 +26,14 @@ test('Purchase single item added from inventory page', async t => {
         .expect(Page.Navbar.El.ShoppingCartBadge.innerText).eql('1');
     await Workflow.Checkout(item, person);
 });
+
+test('Purchase purchase single item added from item page', async t => {
+    const item: Item = await Page.Inventory.GetItemDetails();
+
+    await t
+        .click(Page.Inventory.El.ItemName)
+        .click(Page.Item.El.ItemAddRemoveButton)
+        .expect(Page.Item.El.ItemAddRemoveButton.innerText).eql('REMOVE')
+        .expect(Page.Navbar.El.ShoppingCartBadge.innerText).eql('1');
+    await Workflow.Checkout(item, person);
+});
