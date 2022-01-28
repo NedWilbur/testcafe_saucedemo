@@ -1,4 +1,4 @@
-export class Item {
+export default class Item {
     name: string;
     description: string;
     price: string;

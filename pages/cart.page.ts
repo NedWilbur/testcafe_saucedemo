@@ -1,5 +1,5 @@
 import { Selector, t } from 'testcafe';
-import { Item } from '../common/item';
+import Item from '../common/item';
 
 class CartPage {
     public El = new class {

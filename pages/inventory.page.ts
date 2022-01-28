@@ -1,5 +1,5 @@
 import { Selector, t } from 'testcafe';
-import { Item } from '../common/item';
+import Item from '../common/item';
 
 class InventoryPage {
     public El = new class {
