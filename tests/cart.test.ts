@@ -69,3 +69,27 @@ test('Purchase multiple items added from item page', async t => {
     
     await Workflow.Checkout(item, person);
 });
+
+test('Purchase multiple items added from inventory and item page', async t => {
+    const item: Item = await Page.Inventory.GetItemDetails();
+
+    for (let index = 0; index < 3; index++) {
+        let itemAddButtonElement = Page.Inventory.El.ItemAddRemoveButtonByIndex(index);
+
+        await t
+            .click(itemAddButtonElement)
+            .expect(itemAddButtonElement.innerText).eql('REMOVE')
+            .expect(Page.Navbar.El.ShoppingCartBadge.innerText).eql((index+1).toString());
+    }
+
+    for (let index = 3; index < 6; index++) {
+        await t
+            .click(Page.Inventory.El.ItemNameByIndex(index))
+            .click(Page.Item.El.ItemAddRemoveButton)
+            .expect(Page.Item.El.ItemAddRemoveButton.innerText).eql('REMOVE')
+            .expect(Page.Navbar.El.ShoppingCartBadge.innerText).eql((index+1).toString())
+            .click(Page.Item.El.BackButton);
+    }
+    
+    await Workflow.Checkout(item, person);
+});
